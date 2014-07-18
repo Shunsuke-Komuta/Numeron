@@ -4,29 +4,32 @@ package numeron;
 public class Judge {
 
   private Reciever reciever = null;
-  private String figureLength = "";
 
-  public Judge(String[] args) {
-    reciever = new Reciever(args);
-  }
+  private String eat = "";
+  private String bite = "";
+  private String[] figureLengths = null;
 
-  public String[] execute() {
 
-    figureLength = reciever.getFigureLength();
-    String eat = reciever.sumEat();
-    String bite = reciever.sumBite();
+  public String[] execute(String[] args) {
+
+    reciever = new Reciever();
+
+    figureLengths = reciever.getFigureLength(args);
+    eat = reciever.sumEat(args);
+    bite = reciever.sumBite(args);
     String[] result = {eat, bite};
 
-    if (!figureLength.equals(eat)) {
-      System.out.println(eat + "EAT" + " " + bite + "BITE");
-
-    } else if (figureLength.equals(eat)) {
-      System.out.println(eat + "EAT");
-
-    }
-
-
+    output(figureLengths, bite, bite);
 
     return result;
+  }
+
+  private void output(String[] figureLengths, String eat, String bite) {
+    if (!figureLengths[0].equals(eat)) {
+      System.out.println(eat + "EAT" + " " + bite + "BITE");
+
+    } else if (figureLengths[1].equals(eat)) {
+      System.out.println(eat + "EAT");
+    }
   }
 }

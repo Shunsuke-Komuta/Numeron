@@ -5,17 +5,10 @@ public class Reciever {
   char[] array1 = null;
   char[] array2 = null;
 
-  private String[] args = null;
 
-  public Reciever(String[] args) {
-    this.args = args;
-    String num1 = this.args[0];
-    String num2 = this.args[1];
-    array1 = num1.toCharArray();
-    array2 = num2.toCharArray();
-  }
+  public String sumEat(String[] args) {
 
-  public String sumEat() {
+    setCharaArray(args);
 
     int sum = 0;
 
@@ -28,7 +21,9 @@ public class Reciever {
     return eat;
   }
 
-  public String sumBite() {
+  public String sumBite(String[] args) {
+
+    setCharaArray(args);
 
     int sum = 0;
 
@@ -43,10 +38,22 @@ public class Reciever {
     return bite;
   }
 
-  public String getFigureLength() {
+  public String[] getFigureLength(String[] args) {
 
-    String figureLength = new Integer(array1.length).toString();
+    setCharaArray(args);
 
-    return figureLength;
+    String figureLength1 = new Integer(array1.length).toString();
+    String figureLength2 = new Integer(array2.length).toString();
+
+    String[] figureLengths = {figureLength1, figureLength2};
+
+    return figureLengths;
+  }
+
+  private void setCharaArray(String[] args) {
+    String num1 = args[0];
+    String num2 = args[1];
+    this.array1 = num1.toCharArray();
+    this.array2 = num2.toCharArray();
   }
 }
